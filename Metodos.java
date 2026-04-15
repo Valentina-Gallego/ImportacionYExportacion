@@ -32,4 +32,32 @@ public class Metodos {
             System.out.println();
         }
     }
+
+        public Obj ConsultarEstudiante(int Cedula, LinkedList<Obj> l) {// devuelve un objeto
+        Obj o = new Obj();
+        for (Obj O : l) {
+            if (o.getCedula() == Cedula) {
+                o.setCedula(Cedula);
+                o.setNombre(O.getNombre());
+                o.setCarnet(O.getCarnet());
+            }else{
+                System.out.println("ESTUDIANTE NO ENCONTRADO");
+            }
+        }
+        return o;
+    }
+
+    public LinkedList<Obj> ModificarEstudiante(int Cedula, LinkedList<Obj> l, Scanner teclado) {// devuelve una lista
+        for (Obj O : l) {
+            if (O.getCedula() == Cedula) {
+                System.out.println("Ingrese el nuevo nombre");
+                O.setNombre(teclado.next());
+                System.out.println("Ingrese el nuevo carnet");
+                O.setCarnet(teclado.next());
+            }else{
+                System.out.println("ESTUDIANTE NO ENCONTRADO");
+            }
+        }
+        return l;
+    }
 }
