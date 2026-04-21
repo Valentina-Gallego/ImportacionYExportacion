@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Metodos {
-    public LinkedList<Obj> LlamarLista(LinkedList<Obj> l, Scanner teclado){
+    public LinkedList<Obj> LlamarLista(LinkedList<Obj> l, Scanner teclado) {
         boolean pedir = true;
         while (pedir) {
             Obj o = new Obj();
@@ -23,24 +23,24 @@ public class Metodos {
         return l;
     }
 
-    public void MostrarLista(LinkedList<Obj> l){
+    public void MostrarLista(LinkedList<Obj> l) {
         for (Obj o : l) {
             System.out.println("Nombre: " + o.getNombre());
             System.out.println("Carnet: " + o.getCarnet());
-            System.out.println("Cedula: "+ o.getCedula());
+            System.out.println("Cedula: " + o.getCedula());
             System.out.println("**********************************");
             System.out.println();
         }
     }
 
-        public Obj ConsultarEstudiante(int Cedula, LinkedList<Obj> l) {// devuelve un objeto
+    public Obj ConsultarEstudiante(int Cedula, LinkedList<Obj> l) {// devuelve un objeto
         Obj o = new Obj();
         for (Obj O : l) {
             if (o.getCedula() == Cedula) {
                 o.setCedula(Cedula);
                 o.setNombre(O.getNombre());
                 o.setCarnet(O.getCarnet());
-            }else{
+            } else {
                 System.out.println("ESTUDIANTE NO ENCONTRADO");
             }
         }
@@ -54,10 +54,15 @@ public class Metodos {
                 O.setNombre(teclado.next());
                 System.out.println("Ingrese el nuevo carnet");
                 O.setCarnet(teclado.next());
-            }else{
+            } else {
                 System.out.println("ESTUDIANTE NO ENCONTRADO");
             }
         }
+        return l;
+    }
+
+    public LinkedList<Obj> EliminarEstudiante(int Cedula, LinkedList<Obj> l, Scanner teclado) {
+        l.removeIf(x -> x.getCedula() == Cedula);
         return l;
     }
 }

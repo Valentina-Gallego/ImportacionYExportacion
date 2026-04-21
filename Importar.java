@@ -1,44 +1,28 @@
-/*import java.io.BufferedReader;
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.LinkedList;
 
 public class Importar {
     public LinkedList<Obj> ImportarArchivo() {
-        String rutaArchivo = "Empleados.txt";
+        String rutaArchivo = "Estudiantes.txt";
         LinkedList<Obj> lista = new LinkedList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {//bufferreader, va a la raiz del proyecto, busca un archivo 
             String linea;
             Obj obj = null;
-            while ((linea = br.readLine()) != null) {
-                if (linea.startsWith("Cedula:")) {
+            while ((linea = br.readLine()) != null) {//lee la primer linea, siempre y cuando no sea nula
+                if (linea.startsWith("Cedula:")) {//va a la lineay valida si el primer registro es cedula
                     if (obj != null) {
-                        lista.add(obj);
+                        lista.add(obj);//crea el primer nodo
                     }
                     obj = new Obj();
-                    obj.setCedula(Integer.parseInt(linea.substring(8)));
+                    obj.setCedula(Integer.parseInt(linea.substring(8)));//cuenta a partir de 8 caracteres, NOMBRE: VAL, a partir del espacio
                 } else if (linea.startsWith("Nombre:")) {
                     if (obj != null) {
                         obj.setNombre(linea.substring(8));
                     }
-                } else if (linea.startsWith("Apellido:")) {
+                }   else if (linea.startsWith("Carnet:")) {
                     if (obj != null) {
-                        obj.setApellido(linea.substring(10));
-                    }
-                } else if (linea.startsWith("Direccion:")) {
-                    if (obj != null) {
-                        obj.setDireccion(linea.substring(11));
-                    }
-                } else if (linea.startsWith("edad:")) {
-                    if (obj != null) {
-                        obj.setEdad(Integer.parseInt(linea.substring(6)));
-                    }
-                } else if (linea.startsWith("Sexo:")) {
-                    if (obj != null) {
-                        obj.setSexo(linea.substring(6));
-                    }
-                } else if (linea.startsWith("Correo:")) {
-                    if (obj != null) {
-                        obj.setCorreo(linea.substring(8));
+                        obj.setCarnet(linea.substring(8));//parsear
                         lista.add(obj);
                         obj = null;
                     }
@@ -52,5 +36,4 @@ public class Importar {
         return lista;
     }
 
-}  */
-
+}

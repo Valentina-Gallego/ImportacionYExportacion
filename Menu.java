@@ -26,14 +26,14 @@ public class Menu {
                     Lista = m.LlamarLista(Lista, teclado);
                     break;
                 case 2:
-                    System.out.println("En mantenimiento");
+                    m.ConsultarEstudiante(opt, Lista);
                     break;
                 case 3:
-                    System.out.println("En mantenimiento");
+                    m.ModificarEstudiante(opt, Lista, teclado);
                     break;
 
                 case 4:
-                    System.out.println("En mantenimiento");
+                    m.EliminarEstudiante(opt, Lista, teclado);
                     break;
                 case 5:
                     m.MostrarLista(Lista);
@@ -43,7 +43,8 @@ public class Menu {
                     e.exportarArchivo(Lista);
                     break;
                 case 7:
-                    System.out.println("En mantenimiento");
+                    Importar i = new Importar();
+                    Lista = i.ImportarArchivo();
                     break;
                 case 8:
                     System.out.println("******HASTA LUEGO**************");
