@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Metodos {
-    public LinkedList<Obj> LlamarLista(LinkedList<Obj> l, Scanner teclado) {
+    public LinkedList<Obj> LlamarLista(LinkedList<Obj> l, Scanner teclado, Metodos m) {
         boolean pedir = true;
         while (pedir) {
             Obj o = new Obj();
@@ -11,6 +11,16 @@ public class Metodos {
             System.out.println("Ingrese el carnet");
             o.setCarnet(teclado.next());
             System.out.println("Ingrese la cedula");
+            int cedula = teclado.nextInt();
+            while (m.ValidarCedula(l, cedula)) {
+                System.out.println("La cedula ya existe por favor valide");
+                cedula = teclado.nextInt();
+                pedir = false;
+                break;
+            }
+            if (!pedir) {
+                break;
+            }
             o.setCedula(teclado.nextInt());
             l.add(o);
             System.out.println("Desea seguir ingresando 1. Si, 2. No");
@@ -64,5 +74,17 @@ public class Metodos {
     public LinkedList<Obj> EliminarEstudiante(int Cedula, LinkedList<Obj> l, Scanner teclado) {
         l.removeIf(x -> x.getCedula() == Cedula);
         return l;
+    }
+
+    public boolean ValidarCedula(LinkedList<Obj>l, int cedula){
+        boolean encontro = false;
+        for (Obj o : l) {
+            if (o.getCedula() == cedula) {
+                encontro = true;
+            }else{
+                encontro = false;
+            }
+        }
+        return encontro;
     }
 }

@@ -28,7 +28,7 @@ public class Importar {
                     }
                 }
             }
-            System.out.println("Archivo importado correcrtamente ");
+            System.out.println("Archivo importado correctamente ");
 
         } catch (Exception e) {
             // TODO: handle exception

@@ -23,7 +23,7 @@ public class Menu {
 
             switch (opt) {
                 case 1:
-                    Lista = m.LlamarLista(Lista, teclado);
+                    Lista = m.LlamarLista(Lista, teclado, m);
                     break;
                 case 2:
                     m.ConsultarEstudiante(opt, Lista);
